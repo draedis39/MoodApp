@@ -1,0 +1,96 @@
+moodapp index
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Emotional Trends Dashboard</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <main>
+        <div class="visualizer-section">
+            <div class="chart-container">
+                <canvas id="emotionChart"></canvas>
+            </div>
+            <div class="controls-container">
+                <fieldset>
+                    <legend>Load & Compare</legend>
+                    <select id="state-selector-a">
+                        <option value="">-- Select Primary State --</option>
+                    </select>
+                    <div id="selected-state-notes"></div>
+                    <div>
+                        <input type="checkbox" id="compare-toggle" class="checkbox-input">
+                        <label for="compare-toggle">Compare States</label>
+                    </div>
+                    <div id="compare-controls">
+                        <select id="state-selector-b">
+                            <option value="">-- Select Comparison State --</option>
+                        </select>
+                    </div>
+                </fieldset>
+
+                <fieldset>
+                    <legend>Customize & Save</legend>
+                    <div id="sliders-container"></div>
+                    <input type="text" id="custom-state-name" placeholder="Name your custom state">
+                    <textarea id="custom-state-notes" placeholder="Add personal notes or suggestions..."></textarea>
+                    <button id="save-btn" class="btn-primary">Save Custom State</button>
+                </fieldset>
+                
+                <fieldset>
+                    <legend>Actions</legend>
+                    <button id="log-entry-btn" class="btn-success">✅ Log Current State</button>
+                    <button id="analyze-btn" class="btn-primary">🧠 Analyze with AI</button>
+                    <button id="reset-btn" class="btn-secondary">Reset to Neutral</button>
+                </fieldset>
+            </div>
+        </div>
+
+        <div class="history-section">
+            <h2>Emotional History & Trends</h2>
+            <div class="history-layout">
+                <div class="history-list-container">
+                    <h3>Logged Entries</h3>
+                    <ul id="history-list">
+                        </ul>
+                </div>
+                <div class="trend-chart-container">
+                    <h3>Emotion Trend</h3>
+                    <div class="trend-controls">
+                        <div>
+                            <label for="trend-emotion-selector">Track an emotion:</label>
+                            <select id="trend-emotion-selector"></select>
+                        </div>
+                        <div id="trend-view-toggle">
+                            <label>View:</label>
+                            <input type="radio" id="view-entries" name="trend-view" value="entries" checked>
+                            <label for="view-entries">All Entries</label>
+                            <input type="radio" id="view-daily" name="trend-view" value="daily">
+                            <label for="view-daily">Daily Averages</label>
+                        </div>
+                    </div>
+                    <div class="trend-chart">
+                        <canvas id="trendChart"></canvas>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+    
+    <div id="ai-modal" class="modal-backdrop">
+        <div class="modal-content">
+            <h3 style="text-align: center; margin-top: 0;">AI Analysis</h3>
+            <div id="ai-result"><div class="loader"></div></div>
+            <button id="close-modal-btn" class="btn-secondary" style="margin-top: 1rem;">Close</button>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chartjs-adapter-date-fns/dist/chartjs-adapter-date-fns.bundle.min.js"></script>
+    <script src="app.js"></script>
+</body>
+</html>
